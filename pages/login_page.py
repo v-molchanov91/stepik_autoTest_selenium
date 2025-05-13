@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
-from conftest import browser
 
 
 class LoginPage(BasePage):
