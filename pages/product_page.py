@@ -4,7 +4,7 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
     def add_product_to_basket(self):
-        self.product_url()
+        #self.product_url()
         self.product_added_to_cart()
         self.basket_price()
 
@@ -18,10 +18,18 @@ class ProductPage(BasePage):
         self.solve_quiz_and_get_code()
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         success_message = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE).text
-        assert product_name == success_message, f"Expected product name '{product_name}' in success message, but got '{success_message}'"
+        assert product_name == success_message, \
+            f"Expected product name '{product_name}' in success message, but got '{success_message}'"
 
     def basket_price(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         basket_total = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL).text
         assert product_price == basket_total, f"Expected basket total '{product_price}', but got '{basket_total}'"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def not_be_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE), \
+            "Success message did not disappear, but it should have"
