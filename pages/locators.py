@@ -5,6 +5,7 @@ class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_FAILED = (By.CSS_SELECTOR, "#login_link_inc")
     VIEW_BASKET = (By.XPATH, "//a[text()='View basket']")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class BasketPageLocators:
@@ -15,6 +16,10 @@ class BasketPageLocators:
 class LoginPageLocators:
     LOGIN_FORM = (By.ID, "login_form")
     REGISTER_FORM = (By.ID, "register_form")
+    REGISTER_EMAIL = (By.NAME, "registration-email")
+    REGISTER_PASSWORD = (By.NAME, "registration-password1")
+    REGISTER_CONFIRM_PASSWORD = (By.NAME, "registration-password2")
+    REGISTER_BUTTON = (By.NAME, "registration_submit")
 
 
 class ProductPageLocators:
